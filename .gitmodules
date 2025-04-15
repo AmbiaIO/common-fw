@@ -1,0 +1,3 @@
+[submodule "protocol/protobuf"]
+	path = protocol/protobuf
+	url = https://github.com/AmbiaIO/protobuf.git
