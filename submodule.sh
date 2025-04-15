@@ -1,4 +1,3 @@
-# git submodule add https://github.com/AmbiaIO/protobuf.git protocol/protobuf
-
+# Initialize and update submodules
 git submodule init
 git submodule update --recursive
