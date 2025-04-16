@@ -53,7 +53,7 @@ uint16_t protocol_create_uart_frame(uint8_t *protobuf_data, uint16_t protobuf_le
     total_len += protobuf_len;
 
     // Add CRC
-    uint16_t crc = bsp_crc_16_calculate(output_buffer, total_len);
+    uint16_t crc = bsp_crc_16_calculate(protobuf_data, protobuf_len);
     output_buffer[total_len++] = (crc >> 8) & 0xFF;
     output_buffer[total_len++] = (crc >> 0) & 0xFF;
 
