@@ -48,6 +48,10 @@ uint16_t protocol_create_uart_frame(uint8_t *protobuf_data, uint16_t protobuf_le
     // Add SOM
     output_buffer[total_len++] = PACKET_SOMA;
 
+    // Add length of the protobuf data
+    output_buffer[total_len++] = (protobuf_len >> 8) & 0xFF;
+    output_buffer[total_len++] = (protobuf_len >> 0) & 0xFF;
+
     // Add Protobuf Data
     memcpy(&output_buffer[total_len], protobuf_data, protobuf_len);
     total_len += protobuf_len;
