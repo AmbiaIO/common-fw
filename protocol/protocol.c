@@ -63,5 +63,12 @@ uint16_t protocol_create_uart_frame(uint8_t *protobuf_data, uint16_t protobuf_le
     return total_len;
 }
 
+uint16_t protocol_get_crc_from_uart_frame(uint8_t *uart_frame, uint16_t uart_frame_len)
+{
+    uint16_t crc_from_uart_frame = (uart_frame[uart_frame_len - 3] << 8) | uart_frame[uart_frame_len - 2];
+
+    return crc_from_uart_frame;
+}
+
 /* Private function --------------------------------------------------------- */
 /* End of file -------------------------------------------------------------- */

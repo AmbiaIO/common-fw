@@ -47,6 +47,15 @@ extern "C" {
  */
 uint16_t protocol_create_uart_frame(uint8_t *protobuf_data, uint16_t protobuf_len, uint8_t *output_buffer);
 
+/**
+ * @brief Get the CRC from the UART frame.
+ * 
+ * @param uart_frame Pointer to the UART frame.
+ * @param uart_frame_len Length of the UART frame.
+ * @return CRC of the UART frame.
+ */
+uint16_t protocol_get_crc_from_uart_frame(uint8_t *uart_frame, uint16_t uart_frame_len);
+
 /* -------------------------------------------------------------------- */
 #ifdef __cplusplus
 } // extern "C"
