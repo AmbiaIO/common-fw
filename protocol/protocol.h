@@ -27,6 +27,8 @@ extern "C" {
 
 #define PACKET_SOMA                         (0x2A)  // Start of addressed message
 #define PACKET_EOM                          (0x2C)  // End of message
+#define SIZE_OF_ADDITIONAL_UART_FRAME       (4) // SOM (1 byte) + CRC (2 bytes) + EOM (1 byte)
+#define POSITION_OF_PROTOBUF_DATA           (1) // Position of the protobuf data in the UART frame
 
 #define MAC_ADDR_LEN                        (6)
 

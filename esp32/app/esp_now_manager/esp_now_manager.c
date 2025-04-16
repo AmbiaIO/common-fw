@@ -164,7 +164,7 @@ static void esp_now_manager_task(void *parameter)
 
             ESP_LOGI(TAG, "Receive data from " MACSTR ", len: %d", MAC2STR(recv_cb->mac_addr), recv_cb->data_len);
 
-            network_manager_process_data(recv_cb->data, recv_cb->data_len);
+            network_manager_process_uart_data(recv_cb->data, recv_cb->data_len);
             break;
         }
         default:
