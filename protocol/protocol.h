@@ -30,6 +30,7 @@ extern "C" {
 #define SIZE_OF_ADDITIONAL_UART_FRAME       (4) // SOM (1 byte) + CRC (2 bytes) + EOM (1 byte)
 #define POSITION_OF_PROTOBUF_DATA           (1) // Position of the protobuf data in the UART frame
 
+#define UART_TX_BUFFER_SIZE                 (PACKET_DATA_LEN_MAX + SIZE_OF_ADDITIONAL_UART_FRAME)
 #define MAC_ADDR_LEN                        (6)
 
 /* Public enumerate/structure ----------------------------------------- */
