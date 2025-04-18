@@ -22,6 +22,7 @@
 #include "ble_peripheral.h"
 #include "network_manager.h"
 #include "nvs_flash.h"
+#include "base_board_defs.h"
 
 /* Private defines ---------------------------------------------------------- */
 static const char *TAG = "ble_manager";
@@ -89,7 +90,13 @@ void ble_manager_peripheral_send_data(uint8_t *p_data, uint8_t len)
 /* Private function definitions ---------------------------------------- */
 static void ble_manager_received_handler(uint8_t *p_data, uint8_t data_len)
 {
-    network_manager_process_protobuf_data(p_data, data_len);
+#if (CONFIG_WALL_DIMMER_BOARD)
+    network_manager_process_protobuf_data(GATEWAY_PERIPHERAL, p_data, data_len);
+#elif (CONFIG_CONTROLLER_ESP32_BOARD)
+    network_manager_process_protobuf_data(GATEWAY_CONTROLLER, p_data, data_len);
+#else
+    ESP_LOGE(TAG, "Invalid board");
+#endif
 }
 
 // Enables advertising with parameters:

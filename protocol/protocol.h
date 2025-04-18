@@ -33,19 +33,29 @@ extern "C" {
 #define UART_TX_BUFFER_SIZE                 (PACKET_DATA_LEN_MAX + SIZE_OF_ADDITIONAL_UART_FRAME)
 #define MAC_ADDR_LEN                        (6)
 
+#define POSITION_OF_SOM_IN_UART_FRAME       (0)
+#define POSITION_OF_GATEWAY_IN_UART_FRAME   (1)
+
 /* Public enumerate/structure ----------------------------------------- */
+typedef enum {
+    GATEWAY_NONE,
+    GATEWAY_CONTROLLER,
+    GATEWAY_PERIPHERAL,
+} gateway_t;
+
 /* Public macros ------------------------------------------------------ */
 /* Public variables --------------------------------------------------- */
 /* Public function prototypes ----------------------------------------- */
 /**
  * @brief Creates a framed packet (SOM + Protobuf Data + CRC + EOM) for UART transmission.
  *
+ * @param gateway Gateway of the packet.
  * @param protobuf_data Pointer to the protobuf data.
  * @param protobuf_len Length of the protobuf data.
  * @param output_buffer Buffer to store the framed packet. Should be large enough (protobuf_len + 3).
  * @return Total length of the framed packet.
  */
-uint16_t protocol_create_uart_frame(uint8_t *protobuf_data, uint16_t protobuf_len, uint8_t *output_buffer);
+uint16_t protocol_create_uart_frame(gateway_t gateway, uint8_t *protobuf_data, uint16_t protobuf_len, uint8_t *output_buffer);
 
 /**
  * @brief Get the CRC from the UART frame.
@@ -55,6 +65,15 @@ uint16_t protocol_create_uart_frame(uint8_t *protobuf_data, uint16_t protobuf_le
  * @return CRC of the UART frame.
  */
 uint16_t protocol_get_crc_from_uart_frame(uint8_t *uart_frame, uint16_t uart_frame_len);
+
+/**
+ * @brief Get the gateway from the UART frame.
+ * 
+ * @param uart_frame Pointer to the UART frame.
+ * @param uart_frame_len Length of the UART frame.
+ * @return Gateway of the UART frame.
+ */
+gateway_t protocol_get_gateway_from_uart_frame(uint8_t *uart_frame, uint16_t uart_frame_len);
 
 /* -------------------------------------------------------------------- */
 #ifdef __cplusplus
