@@ -27,7 +27,7 @@ extern "C" {
 
 #define PACKET_SOMA                         (0x2A)  // Start of addressed message
 #define PACKET_EOM                          (0x2C)  // End of message
-#define SIZE_OF_ADDITIONAL_UART_FRAME       (6)     // SOM (1 byte) + Payload Length (2 bytes) + CRC (2 bytes) + EOM (1 byte)
+#define SIZE_OF_ADDITIONAL_UART_FRAME       (7)     // SOM (1 byte) + Gateway (1 byte) + Payload Length (2 bytes) + CRC (2 bytes) + EOM (1 byte)
 #define POSITION_OF_PROTOBUF_DATA           (3)     // Position of the protobuf data in the UART frame
 
 #define UART_TX_BUFFER_SIZE                 (PACKET_DATA_LEN_MAX + SIZE_OF_ADDITIONAL_UART_FRAME)
