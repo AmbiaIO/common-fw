@@ -15,9 +15,7 @@
 #include "protocol.h"
 #include "bsp_crc.h"
 
-/* Public defines ----------------------------------------------------- */
-static const char *TAG = "protocol";
-
+/* Public defines ----------------------------------------------------- */static const char *TAG = "protocol";
 /* Private defines ---------------------------------------------------------- */
 /* Private enumerate/structure ---------------------------------------------- */
 /* Private Constants -------------------------------------------------------- */
